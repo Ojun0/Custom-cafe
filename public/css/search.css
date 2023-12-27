@@ -1,0 +1,33 @@
+
+/* 간단한 스타일링 예시 (필요에 따라 수정 가능) */
+.search {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+input {
+  padding: 8px;
+  width: 800px;
+  margin-bottom: 10px; /* 검색창과 버튼 사이의 간격 조절을 위해 추가 */
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+#select{
+  padding-right: 620px;
+}
+
+#select button {
+  padding: 5px 8px;
+  margin: 5px;
+  font-size: 13px;
+  background-color: #b3abab;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}

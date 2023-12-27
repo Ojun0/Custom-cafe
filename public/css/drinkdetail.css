@@ -1,0 +1,127 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    margin-top:  20px
+}
+/* 리뷰 열 */
+.container .row1{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f6f2e0;
+    border-radius: 5px;
+    width: 600px;
+    height: 1000px;
+    overflow: auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.container .row1 img{
+    width: 400px;
+    height: 400px;
+    margin-bottom: 10px;
+}
+.container .row1 .btncontainer{
+    margin: 10px;
+    justify-content: space-around;
+    display: flex;
+    align-items: start;
+    width: 400px;
+}
+
+.container .row1 .btncontainer button{
+    border: 0;
+    background-color: white;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    
+}
+
+.container .row1 .btncontainer button:hover{
+    background: #088178;
+    color: #fff;
+    transition: 0.5s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.reviewContainer{
+    padding: 4px 0px 5px 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+}
+
+.container .row1 .reviewContainer{
+    background: white;
+    width: 400px;
+    height: 150px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.btncontainer{
+    font-size: 16px;
+}
+
+/* 음료상세정보 */
+.container .detailcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background: #f6f2e0;
+    border-radius: 5px;
+    width: 600px;
+    height: 1000px;
+    padding: 20px;
+    font-size: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.detailcontainer .enrollDate{
+    color: #6a6969;
+    font-size: 14px;
+}
+
+.detailcontainer button{
+    border: 0;
+    background-color: #33A0FF;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+h3{
+    margin-top: 20px;
+}
+.nutritionFacts{
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 4px;
+}
+
+
+/* 좋아요 */
+.like{
+    width: 50px;
+    fill: #ddd;
+}
+
+.like.active{
+    fill: red;
+}
+
+#content-inner{
+    padding: 10px;
+}
+
+.follow{
+    margin-left: 16px;
+}
+
+/* 버튼 */

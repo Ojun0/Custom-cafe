@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tech2etc Ecommerce Tutorial</title>
+        <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> -->
+        <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="../css/receipt.css">
+        <script src="https://kit.fontawesome.com/c633279bec.js" crossorigin="anonymous">
+    </script>
+    </head>
+
+    <body> 
+        <!-- 헤더 -->
+        <%- include('./templates/header.ejs') %>
+
+    <header>
+        <h1>주문 내역</h1>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>주문 번호</th>
+                    <th>주문날짜</th>
+                    <th>상품명</th>
+                    <th>수량</th>
+                    <th>총 가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 예시 주문 내역 -->
+                <tr>
+                    <td>1</td>
+                    <td>2023-12-11</td>
+                    <td>아메리카노</td>
+                    <td>2</td>
+                    <td>6,000원</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+</body>
+
+<%-include('./templates/footer.ejs')%>
+</html>

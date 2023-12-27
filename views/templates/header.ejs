@@ -1,0 +1,57 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech2etc Ecommerce Tutorial</title>
+    <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> -->
+    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/c633279bec.js" crossorigin="anonymous">
+</script>
+</head>
+
+<section id="header">
+    <a href="managerevent"><img src="../img/logo.png" class="logo"></a>
+
+    <div>
+        <ul id="navbar">
+            <li><a href="/">home</a></li>
+            <li><a href="menu">menu</a></li>
+            <li><a href="community">blog</a></li>
+            <li><a href="custom">custom</a></li>
+            <li><a href="cart"><i class="fas fa-cart-shopping"></i></a></li>
+            <li><a href="login"><button class="loginBtn normal">로그인</button></a></li>
+            <% if (user_id) { %>
+                <li><a href="#"><button id="logoutButton" class="loginBtn normal">로그아웃</button></a></li>
+            <% } else { %>
+                <li><a href="login"><button class="loginBtn normal">로그인</button></a></li>
+            <% } %>
+        </ul>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const logoutButton = document.getElementById('logoutButton');
+
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function () {
+                // 로그아웃 버튼을 클릭하면 서버에 로그아웃 요청을 보냄
+                fetch('/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        // 로그아웃이 성공하면 페이지를 새로고침
+                        if (data.success) {
+                            window.location.reload();
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        }
+    });
+</script>

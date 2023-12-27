@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/mypage.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./templates/comheader.ejs') %>
+    <section class="myinfo">
+        <div class="row1">
+            <div class="id" id = "content-inner">아이디 : </div>
+            <div class="nickname"id = "content-inner" >닉네임 :</div>
+            <div class="name" id = "content-inner">이름 :</div>
+            <div class="rateing" id = "content-inner">등급 :</div>
+        </div>
+        <div class="row2">
+            <div class="follow" id = "content-inner">팔로우 :</div>
+            <div class="followed" id = "content-inner">팔로워 :</div>
+            <div class="orderHistory" id = "content-inner">주문내역</div>
+        </div>
+        
+    </section>
+    <section class="erollDrink">
+        <h3>내가 등록한 음료</h3>
+        <div class="drinkManage" id = "content-inner">등록한 음료 관리</div>
+        <div class="monthDrinkCount" id = "content-inner">이달의 음료 선정 횟수 : </div>
+    </section>
+    <section class="point">
+        <h3>포인트</h3>
+        <div class="myPoint" id = "content-inner">나의 포인트 :</div>
+        <div class="pointUseHistory" id = "content-inner">포인트 사용내역</div>
+        <div class="earnPoint" id = "content-inner">포인트 적립내역</div>
+    </section>
+    <div class="wraper">
+    <section class="review">
+        <h3>리뷰</h3>
+        <div class="writtenReview" id = "content-inner" onclick="window.location.href='reviewHistory'">작성한 리뷰</div>
+    </section>
+    <section class="complain">
+        <h3>신고</h3>
+        <div class="writtenComplain" id = "content-inner" onclick="window.location.href='complainhistory'">신고내역</div>
+    </section>
+    </div>
+</body>
+<%-include('./templates/footer.ejs')%>
+</html>

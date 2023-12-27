@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커스텀 커피 만들기</title>
+    <link rel="stylesheet" href="../css/custom.css">
+    <style>
+        input[type="text"] {
+            width: 100%; /* 전체 폭에서 20px을 뺀 크기로 설정 */
+            box-sizing: border-box; /* 내용과 패딩을 포함한 전체 크기로 설정 */
+            padding: 10px; /* 패딩 설정 */
+            margin-bottom: 10px; /* 아래 여백 설정 */
+        }
+        /* 추가된 스타일 */
+        button {
+            width: 50%; /* 100% 폭으로 설정 */
+            box-sizing: border-box; /* 내용과 패딩을 포함한 전체 크기로 설정 */
+            padding: 10px; /* 패딩 설정 */
+            margin-bottom: 10px; /* 아래 여백 설정 */
+        }
+
+        button.normal2{
+            font-size: 14px;
+            font-weight: 600;
+            padding: 15px 30px;
+            color: #000;
+            background-color: #ca8b2d;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        label {
+            display: block; /* 블록 요소로 설정하여 아래로 내려가도록 함 */
+            margin-bottom: 10px; /* 아래 여백 설정 */
+        }
+
+        p {
+            margin-bottom: 10px; /* 아래 여백 설정 */
+        }
+
+        /* 컵 사이즈와 총 ml 수 사이 여백 설정 */
+        #cupSize {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./templates/header.ejs') %>
+    <h2>커스텀 커피 만들기</h2>
+
+    <form action="/custom/makedrink" method="post">
+    <table id="mlTable">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>선택</th>
+                <th>개수</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 컵 행 -->
+            <tr>
+                <td>컵</td>
+                <td>
+                    <!-- <select class="base" onchange="updateBase(this)"> -->
+                        <select name="cupSize" onchange="updateCupSize(this);">
+                            <option id="non" value="0" data-value="0">선택</option>
+                            <option id="cup1" value="작은컵" data-value="355">작은컵</option>
+                            <option id="cup2" value="중간컵" data-value="473">중간컵</option>
+                            <option id="cup3" value="큰컵" data-value="591">큰컵</option>
+                        </select>
+                </td>
+                <td></td>
+            </tr>
+            <!-- 베이스 행 -->
+            <tr>
+                <td>베이스</td>
+                <td>
+                    <!-- <select class="base" onchange="updateBase(this)"> -->
+                        <select name="base" id="base">
+                            <option value="0">선택</option>
+                            <% for (let i = 0; i < value1.length; i++) { %>
+                                <option value="<%= value1[i].name %>"><%= value1[i].name %></option>
+                            <% } %>
+                        </select>
+                </td>
+                <td>
+                    <div class="count-wrap _count">
+                        <input type="number" id="quantity_order" class="quantity" value="1" min="1">
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 재료 1 -->
+            <tr id="ingredient">
+                <td>재료</td>
+                <td>
+                    <!-- <select onchange="updateingredientMl(this)"> -->
+                        <select name="ing1" id="ing1">
+                            <option value="0">선택</option>
+                            <% for (let i = 0; i < value2.length; i++) { %>
+                                <option value="<%= value2[i].name %>"><%= value2[i].name %></option>
+                            <% } %>
+                        </select>
+                </td>
+                
+                <td>
+                    <div class="count-wrap _count">
+                    <input type="number" id="quantity_order2" class="quantity" value="1" min="1" onchange="updatetotalingredientMl(this)">
+                    </div>
+                </td>
+                <td><p class="totalingredientMl"></p></td>
+            </tr>
+
+            <!-- 재료 2 -->
+            <tr id="ingredient2">
+                <td>재료2</td>
+                <td>
+                    <!-- <select onchange="updateingredientMl(this)"> -->
+                        <select name="ing2" id="ing2">
+                            <option value="0">선택</option>
+                            <% for (let i = 0; i < value2.length; i++) { %>
+                                <option value="<%= value2[i].name %>"><%= value2[i].name %></option>
+                            <% } %>
+                        </select>
+                </td>
+                <td>
+                    <div class="count-wrap _count">
+                    <input type="number" id="quantity_order2" class="quantity" value="1" min="1" onchange="updatetotalingredientMl(this)">
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 재료 3 -->
+            <tr id="ingredient3">
+                <td>재료3</td>
+                <td>
+                    <!-- <select onchange="updateingredientMl(this)"> -->
+                        <select name="ing3" id="ing3" >
+                            <option value="0">선택</option>
+                            <% for (let i = 0; i < value2.length; i++) { %>
+                                <option value="<%= value2[i].name %>"><%= value2[i].name %></option>
+                            <% } %>
+                </td>
+                <td>
+                    <div class="count-wrap _count">
+                    <input type="number" id="quantity_order2" class="quantity" value="1" min="1" onchange="updatetotalingredientMl(this)">
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 재료 4 -->
+            <tr id="ingredient4">
+                <td>재료4</td>
+                <td>
+                        <select name="ing4" id="ing4" onchange="updateingredientMl(this)">
+                            <option value="0">선택</option>
+                            <% for (let i = 0; i < value2.length; i++) { %>
+                                <option value="<%= value2[i].name %>"><%= value2[i].name %></option>
+                            <% } %>
+                        </select>
+                </td>
+                <td>
+                    <div class="count-wrap _count">
+                    <input type="number" id="quantity_order2" class="quantity" value="1" min="1" onchange="updatetotalingredientMl(this)">
+                    </div>
+                </td>
+            </tr>
+            
+
+            <!-- 재료 5 -->
+            <tr id="ingredient5">
+                <td>재료5</td>
+                <td>
+                    <select name="ing5" id="ing5">
+                        <option value="0">선택</option>
+                        <% for (let i = 0; i < value2.length; i++) { %>
+                            <option value="<%= value2[i].name %>"><%= value2[i].name %></option>
+                        <% } %>
+                    </select><br>
+                </td>
+                <td>
+                    <div class="count-wrap _count">
+                    <input type="number" id="quantity_order2" class="quantity" value="1" min="1" onchange="updatetotalingredientMl(this)">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+        <section id="sm-banner" class="section-p1">
+                <section id="feature" class="section-p1" >
+                    <div class="fe-box">
+                        <input type="text"   name = "name"  placeholder="레시피 이름" ><br>
+                    </div>
+                    <div class="fe-box" >
+                        <input type="text" id="hashtag" name="hashtag" placeholder="#해시태그"><br>
+                    </div>
+
+                    <div class="fe-box">
+                        <label for="shareis">공유 여부를 선택</label>
+                        <input type="checkbox" id="shareis" name="shareis"><br>
+                    </div>
+
+                </section>
+                    <div>
+                        <input type="text" id="comment" name="comment" placeholder="설명 입력" style="width: 800px;
+                        height: 30vh;">
+                    </div>
+                    <button  type="submit" class="normal2">등록</button>
+                </section>
+
+    </section>
+    
+
+     </div>
+
+    </form>
+
+
+</body>
+
+</html>
+

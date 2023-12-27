@@ -1,0 +1,193 @@
+
+#product1{
+    text-align: center;
+  }
+  
+  #product1 .pro-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  #product1 .pro{
+    width: 23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0; 
+    border-radius: 25px ;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    position: relative;
+  }
+  
+  #product1 .pro:hover{
+    box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.06);
+  }
+  
+  #product1 .pro img{
+    width: 100%;
+    border-radius: 20px ;
+  }
+  
+  #product1 .pro .des{
+    text-align: start;
+    padding: 10px 0;
+  }
+  #product1 .pro .des span{
+    color: #606063;
+    font-size: 10px;
+  }
+  
+  #product1 .pro .des h5{
+    padding-top: 7px;
+    color: #1a1a1a;
+    font-size: 12px;
+  }
+  
+  #product1 .pro .des i{
+    font-size: 10px;
+    color: rgb(243, 181, 25);
+  }
+  
+  #product1 .pro .des h4{
+    padding-top: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #088178;
+  }
+  
+  #product1 .pro .fa-solid{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #e8f6ea;
+    /* font-weight: 500; */
+    color: #088178;
+    border: 1px solid #cce7d0;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+  }
+  
+  .menutype{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background: #C09843;
+    box-shadow:  0 5px 15px rgba(0, 0, 0, 0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
+  .menutype button{
+    border: 0;
+    background-color: transparent;
+    font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.2s;
+  }
+  
+  .menutype button:hover{
+    background: #088178;
+    color: #fff;
+    transition: 0.5s;
+  }
+
+
+  /* 배너 */
+#rate{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px;
+}
+ .first{
+  border: #d4aa4f;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 6px;
+  width: 400px;
+  height: 360px;
+}
+.second{
+  border: #807e7b;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 6px;
+  width: 300px;
+  height: 360px;
+}
+.third{
+  border: #704708;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 6px;
+  width: 60x;
+  height: 360px;
+}
+
+.firstImg{
+  width: 385px;
+  height: 225px;
+}
+
+.secondImg{
+  width: 285px;
+  height: 225px;
+}
+
+.info1{
+  padding-left: 10px;
+}
+
+.info2{
+  padding-left: 10px;
+}
+
+.info3{
+  padding-left: 10px;
+}
+
+.sticker{
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-color: rgb(255, 189, 65);
+  font-size: 8px;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  top: 20px;
+  right: 20px;
+  line-height: 42px;
+}
+
+.drinkSearch{
+  margin-top: 30px;
+  margin-left: 40px;
+  border-radius: 5px;
+  width: 300px;
+  height: 30px;
+  border-color: #606063;
+}
+
+.searchBtn{
+  width: 40px;
+  height: 30px;
+}
+
+.searchWrapper{
+  float: right;
+  width:  400px;
+}

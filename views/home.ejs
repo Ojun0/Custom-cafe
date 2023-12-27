@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tech2etc Ecommerce Tutorial</title>
+        <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> -->
+        <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/profile.css">
+        <script src="https://kit.fontawesome.com/c633279bec.js" crossorigin="anonymous">
+    </script>
+    </head>
+
+    <body> 
+        <!-- 헤더 -->
+        <%- include('./templates/header.ejs') %>
+                <!-- 이미지 선택 -->
+                <section id="feature" class="section-p1">
+
+                    <div class="fe-box">
+                        <img src="img/features/f1.png" alt="">
+                        <h6><a href="/custom">커스텀음료 만들기</a></h6>
+                    </div>
+                    <div class="fe-box">
+                        <img src="img/features/f2.png" alt="">
+                        <h6><a href="/cart">음료주문하기</a></h6>
+                    </div>
+                    <div class="fe-box">
+                        <img src="img/features/f3.png" alt="">
+                        <h6><a href="/myRegistration">등록한음료</a></h6>
+                    </div>
+                    <div class="fe-box">
+                        <img src="img/features/f4.png" alt="">
+                        <h6><a href="mypage">내정보</a></h6>
+                    </div>
+        
+                    <!-- 프로필 -->
+                    <div class="wrapper">
+                        <div class="img-area">
+                          <div class="inner-area">
+                            <img src="../img/person.png" alt="">
+                          </div>
+                        </div>
+                        <div class="icon pen"><a href="mypage"><i class="fa-solid fa-pen-to-square"></i></a></div>
+                        
+                        <<div class="social-icons">
+                          <% if (userRank === 'gold') { %>
+                            <a href="#"><img src="../public/img/rank_gold" alt="Gold" class="medal gold"></a>
+                          <% } else if (userRank === 'silver') { %>
+                            <a href="#"><img src="../public/img/rank_silver" alt="Silver" class="medal silver"></a>
+                          <% } else { %>
+                            <a href="#"><img src="../public/img/rank_bronze" alt="Bronze" class="medal"></a>
+                          <% } %>
+                        </div>
+
+                      
+                                            <!-- 프로필 -->
+                    <% if (userInfo) { %>
+                    <div class="wrapper" id="profile">
+                    <div class="name"><%= userInfo.username %></div>
+                    <div class="about">follower <%= userInfo.follower_num %>명</div>
+                    
+                    <div class="buttons">
+                        <button><i class="fa-solid fa-bookmark"></i> Subscribe</button>
+                    </div>
+                    
+                    
+                    <div class="social-share">
+                        <div class="row">
+
+                            <i class="icon-2 fas fa-heart"></i>
+                            <span>종아요<%= userInfo.total_act_point %></span>
+                        </div>
+                        <div class="row">
+                            <i class="fa-solid fa-check"></i>
+                            <span>구독수 <%= userInfo.drink_share_num %></span>
+                        </div>
+                        <div class="row">
+                            <i class="fa-solid fa-coins"></i>
+                            <span>포인트 <%= userInfo.total_point %></span>
+                        </div>
+                        <div class="row">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span>활동 <%= userInfo.total_act_point %></span>
+                        </div>
+
+                    </div>
+
+                    </div>
+                    <% } else { %>
+                        <% } %>
+                </section>
+
+                
+
+                <section id="product2" class="section-p1">
+                  <h2>이달의 음료</h2>
+                  
+                
+                  <div class="pro-container">
+                    <% for (let i = 0; i < monthDrinkList.length; i++) { %>
+                      <% if (monthDrinkList[i].share_is === '1') { %>
+                        <div class="pro">
+                          <img src="../img/coffee.png" alt="">
+                          <div class="des">
+                            <span><%= monthDrinkList[i].recipe_name %></span>
+                            <h3><%= monthDrinkList[i].recipe_description %></h3>
+                            <h6>구독수</h6><h7><%= monthDrinkList[i].sub_num %></h7><h6>주문 수</h6><h7><%= monthDrinkList[i].total_order_num %></h7>
+                            <h4><%= monthDrinkList[i].recipe_price %>원</h4>
+
+      
+                            <form action="/cart/<%= monthDrinkList[i].recipe_num %>" method="post">
+                              <input type="hidden" name="menuNumber" value="<%= monthDrinkList[i].recipe_num %>">
+                              <input type="submit" value="장바구니">
+                            </form>
+                          </div>
+                        </div>
+                      <% } %>
+                    <% } %>
+                  </div>
+              </section>
+
+
+
+        <!-- 내가 등록한 음료 -->
+        <section id="product1" class="section-p1">
+          <h2>내가 등록한 음료</h2>
+  
+          <div class="pro-container">
+              <!-- 반복문 생성! -->
+              <% for (let i = 0; i < myRecipes.length; i++) { %>
+                <div class="pro">
+                  <img src="../img/coffee.png" alt="">
+                  <div class="des">
+                    <span><%= myRecipes[i].recipe_name %></span>
+                    <h6>주문 수</h6><h7><%- myRecipes[i].total_order_num %></h7>
+                    <h6>좋아요 수</h6><h7><%- myRecipes[i].like_num %></h7>
+                    <h4><%- myRecipes[i].recipe_price %></h4>
+              
+                    <form action="/cart2/<%= myRecipes[i].recipe_num %>" method="post">
+                      <input type="hidden" name="menuNumber2" value="<%= myRecipes[i].recipe_num %>">
+                      <input type="submit" value="장바구니 담기">
+                    </form>
+                  </div>
+                </div>
+              <% } %>
+              
+          </div>
+      </section>
+  
+            <!-- 제품 -->
+            <section id="product1" class="section-p1">
+              <h2>내가 구독한 음료</h2>
+              <div class="pro-container">
+                <% for (let i = 0; i < mySubscriptions.length ; i++) { %>
+                  <div class="pro">
+                    <img src="../img/coffee3.png" alt="">
+                    <div class="des">
+                      <span><%= mySubscriptions[i].name %></span>
+                      <h6>주문 수</h6><h7><%- mySubscriptions[i].order_count %></h7>
+                      <h4><%- mySubscriptions[i].price %></h4>
+                
+                      <form action="/<%= mySubscriptions[i].recipe_recipe_num %>" method="post">
+                        <input type="hidden" name="menuNumber3" value="<%= mySubscriptions[i].recipe_recipe_num %>">
+                        <input type="submit" value="장바구니 담기">
+                      </form>
+                    </div>
+                  </div>
+                <% } %>
+                  
+              </div>
+          </section>
+            
+        </div>
+    </section>
+
+
+
+
+
+
+        <script src="script.js"></script>
+    </body>
+
+    <%-include('./templates/footer.ejs')%>
+</html>

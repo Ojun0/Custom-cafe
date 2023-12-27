@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/history.css">
+</head>
+<body>
+    <%- include('./templates/comheader.ejs') %>
+    <div class="back">
+        <h2>리뷰 내역</h2>
+        <div class="divisionLine"></div>
+        <% for (let i = 0; i < 8; i++) { %>
+            <div class="review">
+                <div class="colum1">
+                    <div class="title">dd</div>
+                    <div class="star">ss</div>
+                </div>
+                <div class="colum2">
+                    <div class="content"></div>
+                </div>
+               <div class="colum3">
+                <div class="date"></div>
+                <div class="delete"></div>
+            </div>
+                
+            </div>
+        <% } %>
+</body>
+<%-include('./templates/footer.ejs')%>
+</html>

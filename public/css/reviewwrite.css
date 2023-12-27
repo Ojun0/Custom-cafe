@@ -1,0 +1,73 @@
+.back{
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    background: #f6f2e0;
+    width: 1200px;
+    height: 800px;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    overflow: auto;
+}
+
+.divisionLine {
+    border-top: 1px solid #444444;
+    margin: 30px 0px;
+  }
+
+  h2{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.title{
+    background: white;
+    border-radius: 10px;
+    width: 900px;
+    height: 70px;
+    border: 0;
+    margin-left: 140px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+.content{
+    background: white;
+    border-radius: 10px;
+    width: 900px;
+    height: 380px;
+    border: 0;
+    margin-left: 140px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.rate { display: inline-block;border: 0;margin-right: 15px;}
+.rate > input {display: none;}
+.rate > label {float: right;color: #ddd}
+.rate > label:before {display: inline-block;font-size: 1rem;padding: .3rem .2rem;margin: 0;cursor: pointer;font-family: FontAwesome;content: "\f005 ";}
+.rate .half:before {content: "\f089 "; position: absolute;padding-right: 20px;}
+.rate input:checked ~ label, 
+.rate label:hover,.rate label:hover ~ label { color: #f73c32 !important;  } 
+.rate input:checked + .rate label:hover,
+.rate input input:checked ~ label:hover,
+.rate input:checked ~ .rate label:hover ~ label,  
+.rate label:hover ~ input:checked ~ label { color: #f73c32 !important;  } 
+
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px;
+}
+
+.enroll{
+    background: #33A0FF;
+    border: 0;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+}

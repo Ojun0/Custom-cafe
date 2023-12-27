@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tech2etc Ecommerce Tutorial</title>
+        <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> -->
+        <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="../css/style.css">
+        <script src="https://kit.fontawesome.com/c633279bec.js" crossorigin="anonymous">
+    </script>
+    </head>
+
+    <body> 
+        <!-- 헤더 -->
+        <%- include('./templates/header.ejs') %>
+
+      <!-- 제품 -->
+      <section id="product1" class="section-p1">
+        <h2>이달의 음료 메뉴</h2>
+        <p>맛있게드세요</p>
+        <div class="pro-container">
+            <!-- 반복문 생성! -->
+            <% for (let i = 0; i < 8; i++) { %>
+              <div class="pro">
+                <img src="../img/coffee.png" alt="">
+                <div class="des">
+                  <span>커피 이름</span>
+                  <h3>레시피</h3>
+                  <h6>구독수</h6><h7>0</h7>
+                  <h6>좋아요 수</h6><h7>0</h7>
+                  <h4>4500원</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              </div>
+            <% } %>
+            
+        </div>
+    </section>
+
+          <!-- 제품 -->
+          <section id="product1" class="section-p1">
+            <h2>일반 커피 메뉴</h2>
+            <p>맛있게드세요</p>
+            <div class="pro-container">
+                <% for (let i = 0; i < 8; i++) { %>
+                  <div class="pro">
+                    <img src="../img/coffee2.png" alt="">
+                    <div class="des">
+                      <span>커피 이름</span>
+
+                      <h4>4500원</h4>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                  </div>
+                <% } %>
+                
+            </div>
+        </section>
+
+        <%-include('./templates/footer.ejs')%>
+        </html>
+
+
+                        <!-- <div class="pro">
+                    <img src="img/coffee.png" alt="">
+                    <div class="des">
+                        <span>adidas</span>
+                        <h5>Cartoondasdf</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>$78</h4>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div> -->
+                <!-- 반복문 생성! -->

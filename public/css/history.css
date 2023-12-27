@@ -1,0 +1,41 @@
+.divisionLine {
+    border-top: 1px solid #444444;
+    margin: 30px 0px;
+  }
+  
+.back{
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    background: #f6f2e0;
+    width: 1200px;
+    height: 800px;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    overflow: auto;
+}
+
+h2{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.review{
+    background: white;
+    border-radius: 6px;
+    width: 1000px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    padding: 30px;
+    margin-left: 90px;
+    margin-bottom: 20px;
+}
+
+.writeBtn{
+    width: 80px;
+    height: 100px;
+    border: 0;
+    border-radius: 4px;
+    background: #33A0FF;
+    margin-left: 20px;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="stylesheet" href="../css/community.css">
+    <script src="https://kit.fontawesome.com/c633279bec.js" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <!-- 배너 -->
+    <%- include('./templates/comheader.ejs') %>
+    <section id="rate">
+    <!-- 2등 배너 -->
+      
+        <div class="second">
+          <img class="secondImg" src="../img/coffee.png" alt="">
+          <div class="sticker">2등</div>
+                <div class="info1">
+                  <div><%- customDrink[1].recipe_name %></div>
+                  <h5>주문수</h5><span><%- customDrink[1].total_order_num %></span>
+                  <h5>구독수</h5><span><%- customDrink[1].sub_num %></span>
+                  <h6>제작자</h6><span><%- customDrink[1].user_userid %></span>
+                  <div><%- customDrink[1].recipe_price %></div>
+                </div>
+          </div>
+        
+        <!-- 1등배너 -->
+        
+        <div class="first">
+          <img class="firstImg" src="../img/coffee.png" alt="">
+          <div class="info2">
+            <div><%- customDrink[0].recipe_name %></div>
+            <h5>주문수</h5><span><%- customDrink[0].total_order_num %></span>
+            <h5>구독수</h5><span><%- customDrink[0].sub_num %></span>
+            <h5>제작자</h5><span><%- customDrink[0].user_userid %></span>
+            <div><%- customDrink[0].recipe_price %></div>
+          </div>
+        </div>
+        
+        <!-- 3등배너 -->
+        
+        <div class="third">
+          <img class="thirdyimg" src="../img/coffee.png" alt="">
+          <div class="info3">
+            <div><%- customDrink[2].recipe_name %></div>
+            <h5>주문수</h5><span><%- customDrink[2].total_order_num %></span>
+            <h5></h5>구독수</span><span><%- customDrink[2].sub_num %></span>
+            <h5>제작자</h5><span><%- customDrink[2].user_userid %></span>
+            <div><%- customDrink[2].recipe_price %></div>
+          </div>
+        </div>
+        
+      </section>
+
+    <!--메뉴 목록-->
+    <div class="menutype">
+        <button class="popular">인기순</button>
+        <button class="like">좋아요순</button>
+        <button class="user">이달의 회원</button>
+    </div>
+
+    <!-- 검색창 -->
+    <div >
+      <form class="searchWrapper" action="/community/search" method="post">
+        <input style=""  type="text" class="drinkSearch" name="hashtag" placeholder="#해시 태그">
+        <button class="searchBtn" type="submit">검색</button>
+      </form>
+    </div>
+    
+    <!-- 음료 -->
+    <section style="padding-top: 100px;"  id="product1" class="section-p1">
+      
+        <div class="pro-container">
+            <!-- 반복문 생성! -->
+            <% for (let i = 0; i < customDrink.length ; i++) { %>
+                
+                  <div class="pro">
+                    <img src="../img/coffee.png" alt="">
+                    <div class="des">
+                      <div class="drinkName" > <%- customDrink[i].recipe_name %></div>
+                      <h3>레시피</h3>
+                      <h6>주문수</h6><h7><%- customDrink[i].total_order_num %></h7>
+                      <h6>구독수</h6><span><%- customDrink[i].sub_num %></span>
+                      <h6>제작자</h6><span><%- customDrink[i].user_userid %></span>
+                      <h4><%- customDrink[i].recipe_price %></h4>
+                      <form action="/community/<%= customDrink[i].recipe_num %>" method="post">
+                        <input type="hidden" name="menuPrice" value="<%= customDrink[i].recipe_price %>">
+                        <input type="hidden" name="menuName" value="<%= customDrink[i].recipe_name %>">
+                        <input type="hidden" name="menuNum" value="<%= customDrink[i].recipe_num %>">
+                        <input type="submit" class="subscribe" value="음료구독">
+                      </form>
+                    </div>
+                  </div>
+                              
+            <% } %>
+
+        </div>
+    </section>
+</body>
+<%-include('./templates/footer.ejs')%>
+</html>

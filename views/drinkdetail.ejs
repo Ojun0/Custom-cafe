@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/drinkdetail.css">
+</head>
+<body>
+    <%- include('./templates/comheader.ejs') %>
+
+    <input type="hidden" name="menuNumber" value="customDrink[0].recipe_num">
+    <input type="hidden" name="menuNumber" value="<%= customDrink[0].recipe_num %>">
+    <input type="hidden" name="menuNumber" value="<%= customDrink[0].recipe_num %>">
+
+    <div class="container">
+        <!-- 음료 사진 행 -->
+        <div class="row1">
+            <img src="../img/coffee.png" alt="">
+            <div class="btncontainer">
+                <!-- 음료구독 -->
+                <form action="/drinkdetail/subscribe/<%= menuNumber %>" method="post">
+                <input type="hidden" name="menuNumber" value=" <%= customDrink.recipe_num %>">
+                <input type="hidden" name="menuPrice" value=" <%= customDrink.recipe_price %>">
+                <input type="hidden" name="menuName" value=" <%= customDrink.recipe_name %>">
+                <input type="submit" class="subscribe"  value="음료구독"></input>
+                </form>
+                <span class="subscribeNum">구독수 :</span> <span><%= customDrink.sub_num %></span>
+
+                <!-- 장바구니 -->
+                <form action="/drinkdetail/cart/<%= menuNumber %>" method="post">
+                    <input type="hidden" name="menuNumber" value=" <%= customDrink.recipe_num %>">
+                    <input type="hidden" name="menuPrice" value=" <%= customDrink.recipe_price %>">
+                    <input type="hidden" name="menuName" value=" <%= customDrink.recipe_name %>">
+                    <input type="submit" class="subscribe"  value="장바구니"></input>
+                </form>
+                
+                <button class="reviewWrite" onclick="window.location.href='reviewWrite'">리뷰쓰기</button>
+        </div>
+
+        <!-- 음료 리뷰  -->
+        <% for (let i = 0; i < 8; i++) { %>
+            <div class="reviewContainer">
+                <div class="reviewTitle">리뷰제목</div>
+                <div class="reviewcontent"></div>
+                <div class="info">
+                    <div class="date"></div>
+                    <div class="like"></div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+    <input type="hidden" name="userId" value="<%= customDrink[0].user_userid %>">
+
+    <!-- 음료 상세 정보 행 -->
+    <div class="detailcontainer">
+        <div class="drinkname" id = "content-inner"> <%= customDrink.recipe_name %></div>
+        <span class="price" id = "content-inner">가격 : </span><span><%= customDrink.recipe_price %></span>
+        <div class="createWrapper" id = "content-inner">
+        <form action=" /drinkdetail/<%= userId %>">
+        <span class="drinkCreator" >음료 제작자 이름 :</span> <span> <%= customDrink.user_userid %></span>
+        <input type="submit" value="팔로우"></input>
+        </form>
+        </div>
+        <span class="orderCount" id = "content-inner">주문수 : </span> <span> <%= customDrink.total_order_num %></span>
+        <div class="hashtag" id = "content-inner"></div>
+        <h3>영양정보</h3>
+        <div class="nutritionFacts"> 
+            <div class="carbohydrate" id = "content-inner">탄수화물 : </div>
+            <div class="protein" id = "content-inner">단백질 : </div>
+            <div class="fat" id = "content-inner">지방 : </div>
+            <div class="sugar" id = "content-inner">당 : </div>
+            <% for (let i = 0; i < customIngredient.length; i++) { %>
+                <h5><%= customIngredient[i].ingredient_name %> </h5>
+            <% } %>
+        </div>
+    </div>
+    </div>
+</body>
+<%-include('./templates/footer.ejs')%>
+</html>

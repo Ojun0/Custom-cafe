@@ -1,0 +1,165 @@
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tech2etc Ecommerce Tutorial</title>
+        <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> -->
+        <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/search.css">
+        <link rel="stylesheet" href="./css/sidebar.css">
+        <script src="https://kit.fontawesome.com/c633279bec.js" crossorigin="anonymous">
+    </script>
+    <style>
+      .profile{
+        padding-left: 200px;
+      }
+    </style>
+    </head>
+
+    <body> 
+        <!-- 헤더 -->
+        <section id="header">
+            <a href="/"><img src ="../img/logo.png" class="logo"></a>
+            <div>
+                <ui id="navbar">
+                </ui>
+            </div>
+        </section>
+
+        <!-- 사이드바 -->
+        <aside class="side-bar">
+            <section class="side-bar__icon-box">
+            <section class="side-bar__icon-1">
+            <div></div>
+            <div></div>
+            <div></div>
+            </section>
+        </section>
+        <ul>
+            <li>
+            <a href="managerMain">회원관리</a>
+            </li>
+            <li>
+            <a href="managerevent">이달의 음료관리</a>
+            </li>
+            <li>
+            <a href="managerorder">주문관리</a>
+            </li>
+            <li>
+            <a href="#">신고관리</a>
+            </li>
+            <li>
+            <a href="#">재고관리</a>
+            </li>
+
+        </ul>
+        </aside>
+
+
+            <!-- 검색창 -->
+            <div class="search">
+            <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+
+            <!-- 검색 버튼 -->
+            <button onclick="search()">검색</button>
+
+            <!--총 주문 수  10개 레시피 가져오기-->
+            
+            <button id="setTopDrinksBtn">이달의 음료 설정</button>
+
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+              $(document).ready(function () {
+                $("#setTopDrinksBtn").on("click", function () {
+                  setTopDrinks(); // 새로 추가한 함수 호출
+                });
+              });
+            
+              async function setTopDrinks() {
+                try {
+                  const response = await fetch('/managerorder/setTopDrinks', {
+                    method: 'POST',
+                  });
+            
+                  if (response.ok) {
+                    // 서버에서 응답을 받으면 알림 표시 및 페이지 이동
+                    alert('이달의 음료가 설정되었습니다!');
+                    window.location.href = "/managerevent"; // 페이지 이동
+                  } else {
+                    console.error('이달의 음료 설정 중 오류 발생');
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                  }
+                } catch (error) {
+                  console.error('Error:', error);
+                  alert('오류가 발생했습니다. 다시 시도해주세요.');
+                }
+              }
+            </script>
+
+    
+            
+            <!-- 검색 결과 또는 다른 내용을 표시할 공간 -->
+            <div id="resultArea"></div>
+            </div>
+
+            <!-- 제품 -->
+        <section id="product2" class="section-p1">
+        <h2>순위표</h2>
+        <p>공유된 음료 순위</p>
+        <div class="pro-container">
+            <!-- managerorder.ejs -->
+                <% if (recipeList && recipeList.length > 0) { %>
+                  <% for (let i = 0; i < recipeList.length; i++) { %>
+                    <div class="pro">
+                      <img src="../img/coffee.png" alt="">
+                      <div class="des">
+                        <span><%= recipeList[i].recipe_name %></span>
+                        <h3><%= recipeList[i].recipe_description %></h3>
+                        <h6>구독수</h6><h7><%= recipeList[i].sub_num %></h7><h6>좋아요 수</h6><h7><%= recipeList[i].like_num %></h7>
+                        <h4><%= recipeList[i].recipe_price %>원</h4>
+                        <h4>총주문 수: <%= recipeList[i].total_order_num %></h4>
+                        
+                        <!-- 버튼 추가 -->
+                        
+                      </div>
+                      <a href="/drinldetail"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    </div>
+                  <% } %>
+                <% } else { %>
+                  <p>음료가 없습니다.</p>
+                <% } %>
+              </div>
+        </div>
+            
+        </div>
+    </section>
+
+
+
+    <script>
+        async function setAsMonthDrink(recipeNum) {
+          try {
+            const response = await fetch('/managerorder/monthdrink', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ recipeNum }),
+            });
+      
+            if (response.ok) {
+              // 서버에서 응답을 받으면 페이지 새로고침
+              location.reload();
+            } else {
+              console.error('Failed to set as month drink');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        }
+      </script>

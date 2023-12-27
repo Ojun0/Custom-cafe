@@ -1,0 +1,70 @@
+
+section{
+    background: #f6f2e0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.myinfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 30px;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 18px;
+}
+
+.row1{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 400px;
+}
+
+#content-inner{
+    padding-top:10px;
+}
+.row2{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 400px;
+}
+
+
+.erollDrink{
+    margin: 30px;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 18px;
+}
+
+.point{
+    margin: 30px;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 18px;
+}
+
+.wraper{
+    margin: 30px;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.wraper .review{
+    width: 600px;
+    height: 100px;
+    padding: 18px;
+    border-radius: 10px;
+}
+.wraper .complain{
+    width: 600px;
+    height: 100px;
+    padding: 18px;
+    border-radius: 10px;
+}

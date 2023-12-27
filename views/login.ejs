@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tech2etc Ecommerce Tutorial</title>
+        <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> -->
+        <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="https://kit.fontawesome.com/c633279bec.js" crossorigin="anonymous">
+    </script>
+    </head>
+    <body> 
+        <section id="header">
+            <a href="#"><img src ="./img/logo.png" class="logo"></a>
+            <div>
+                <ui id="navbar">
+                    <li><a class="active" href="/">home</a></li>
+                    <li><a href="login"><button class="loginBtn normal">로그인</button></a></li>
+                </ui>
+            </div>
+        </section>
+<!-- 로그인 & 회원가입 화면 -->
+        <section id="login">
+            <div class="wrapper">
+                <span class="icon-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+    
+                <div class="form-box login">
+                    <h2>Login</h2>
+                    <form action="/login/signin" method="post">
+                        <div class="input-box">
+                            <span class="icon"><i class="fa-solid fa-id-card"></i></span> 
+                            <input type="text" name="id" required>
+                            <label>ID</label>
+                        </div>
+                        <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" name="pw" required>
+                        <label>Password</label>
+                        </div>
+                        <button type="submit" class="btn">login</button>
+                        <div class="login-register">
+                            <p>Don't bave an account?<a href="#" class="register-link">register</a></p>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="form-box register">
+                    <h2>Register</h2>
+                    <form action="/login/signup" method="post">
+                        <div class="input-box">
+                            <span class="icon"><i class="fa-solid fa-user"></i></span> 
+                            <input type="text" name="name" required>
+                            <label>name</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><i class="fa-solid fa-id-card"></i></span> 
+                            <input type="text" name="id" required>
+                            <label>ID</label>
+                        </div>
+                        <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" name="pw" required>
+                        <label>Password</label>
+                        </div>
+                        <button type="submit" class="btn">register</button>
+                        <div class="login-register">
+                            <p>이미 가지고 계신가요?<a href="#" class="login-link">login</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <script src="./js/script.js"></script>
+
+        
+        
+    </body>
+
+    </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>이벤트 리스너로 장바구니 수량 변경 및 자동 합계 구하기</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/10-11.css" />
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="./js/10-11.js"></script>  
+</head>
+
+
+    <body> 
+        <!-- 헤더 -->
+        <%- include('./templates/header.ejs') %>
+            <form name="orderform" id="orderform" method="post" class="orderform" action="/cart/order">
+                    <input type="hidden" name="cmd" value="order">
+                    <div class="basketdiv" id="basket">
+                        <div class="row head">
+                            <div class="subdiv">
+                                <div class="pname">상품명</div>
+                            </div>
+                            <div class="subdiv">
+                                <div class="basketprice">가격</div>
+                            </div>
+                            <div class="split"></div>
+                        </div>
+
+                        <% for (let i = 0; i < cartNum.length ; i++) { %>
+                        <div class="row data">
+                            <div class="subdiv">
+                                <div class="pname">
+                                    <span><%- cartNum[i].recipe_name %></span>
+                                </div>
+                            </div>
+                            <div class="subdiv">
+                                <div class="basketprice"><%- cartNum[i].recipe_price %> 원</div>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    
+                    <div id="goorder" class="">
+                        <div class="clear"></div>
+                        <div class="buttongroup center-align cmd">
+                            <input type="submit" value="상품 주문" >
+                        </div>
+                    </div>
+                </form>
+        
+        </body>
+        </html>
+        
+
+        <%-include('./templates/footer.ejs')%>
+        </html>
